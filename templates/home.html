@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% csrf_token %}
+<html>
+<title>EC cart</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<head>
+<style>
+body {
+  font-family: Arial;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+form.example input[type=text] {
+  padding:6px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+form.example button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.example button:hover {
+  background: #0b7dda;
+}
+
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.dropbtn {
+  background-color: #7386F4;
+  color: white;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: blue;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+</style>
+</head>
+
+<body>
+<div style="float:right;text-align:left">
+<form class="example" action="{% url 'search' %}" method="GET" style="margin:auto;max-width:300px">
+  <input type="text" placeholder="Search.." name="q">
+  <button type="submit"><i class="fa fa-search"></i></button>
+</form>
+</div>
+
+
+		<div class="dropdown">
+			  <button class="dropbtn">Filter</button>
+		<div class="dropdown-content">
+			<a href="/">All</a>
+	  		{% for i in ct %}
+    			<a href={{i.get_url}}>{{i.name}}</a>
+	  		{% endfor %}
+  		</div>
+		</div>
+
+
+  <!-- Project Section -->
+<div>
+<div class="w3-content w3-padding" style="max-width:1564px">
+  <div>
+	  <center><h3 style="color:#7386F4;"><b>EC products</b></h3></center>
+  </div><br><br>
+		{% for i in pg.object_list %}
+
+
+	<div class="w3-col l3 m6 w3-margin-bottom">
+        <div class="w3-display-container">
+        <div class="w3-display-topleft w3-black w3-padding">{{i.name}}</div>
+	<a class="imgover" href="{{i.get_url}}"><img src="{{i.img.url}}" alt="House" style="height:250px;width:250px%"></a>
+
+	 <p>{{i.des|truncatechars:50}}</p>
+       </div>
+	</div>
+{% endfor %}
+	</div>
+<br><br>
+
+
+
+
+</div><br><br><br><br><br><br>Searching.....
+
+
+			<center>
+			{% for p in pg.paginator.page_range %}
+				<a href="?page={{p}}" class=" btn btn-light btn-sm {% if pg.number == p %} active {% endif %}" style="color:green">{{p}}</a>
+
+			{% endfor %}
+				</center><br><br><br><br>
+
+</body>
+</html>
+{% endblock %}

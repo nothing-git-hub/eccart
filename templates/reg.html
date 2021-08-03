@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<html>  
+<head>  
+<meta name="viewport" content="width=device-width, initial-scale=1">  
+<style>  
+body{  
+  font-family: Calibri, Helvetica, sans-serif;  
+  background-color:  black;
+}  
+.container {  
+    padding: 50px;  
+
+}  
+  
+input[type=text], input[type=password], textarea {  
+  width: 100%;
+  padding: 15px;  
+  margin: 5px 0 22px 0;  
+  display: inline-block;  
+  border: none;  
+  background: #f1f1f1;  
+}  
+input[type=text]:focus, input[type=password]:focus {  
+  background-color: orange;  
+  outline: none;  
+}  
+ div {  
+            padding: 10px 0;  
+         }  
+hr {  
+  border: 1px solid #f1f1f1;  
+  margin-bottom: 25px;  
+}  
+.registerbtn {  
+  background-color: #4CAF50;  
+  color: white;  
+  padding: 16px 20px;  
+  margin: 8px 0;  
+  border: none;  
+  cursor: pointer;  
+  width: 25%;
+  opacity: 0.9;  
+}  
+.registerbtn:hover {  
+  opacity: 1;  
+}  
+</style>  
+</head>  
+<body>  
+<form>  
+  <div class="container">  
+  <center>  <h1 style="color:white"><b>  Registeration </b></h1> </center>
+  <hr>
+  <label style="color:white;"><b> Firstname</b> </label>
+<input type="text" name="firstname" placeholder= "Firstname" size="15" required />
+  
+<label style="color:white;"><b> Lastname:</b> </label>
+<input type="text" name="lastname" placeholder="Lastname" size="15" required />
+
+ 
+
+<label style="color:white;">
+<b>Phone :</b>
+</label>  
+<input type="text" name="country code" placeholder="Country Code"  value="+91" size="2"/>
+  
+ 
+ <label for="email" style="color:white;"><b>Email</b></label>
+ <input type="text" placeholder="Enter Email" name="email" required>
+<label style="color:white;"><b> Username</b> </label>
+<input type="text" name="username" placeholder="username" size="15" required />
+  
+    <label for="psw" style="color:white;"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+  
+    <label for="psw-repeat" style="color:white;"><b>Re-type Password</b></label>
+    <input type="password" placeholder="Retype Password" name="psw-repeat" required>
+   <center> <button type="submit" class="registerbtn">Register</button></center>
+</form>  
+</body>  
+</html>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% load static %}
+
+
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <style>
+    /* Style the body */
+body {
+  font-family: Arial;
+  margin: 0;
+}
+
+/* Header/Logo Title */
+.header {
+  padding: 5px;
+  text-align: center;
+  background-color:#7386F4;
+
+  color: white;
+  font-size: 20px;
+}
+
+/* Page Content */
+.content {padding:20px;}
+body  {
+
+     background-color:white;
+}
+</style>
+
+</head>
+<body>
+	<header>
+        <div class="header">
+            <h1><span class="w3-padding w3-black w3-opacity-min"><b>EC</b></span> <b>cart </b></h1>
+
+</div>
+
+
+                           <nav id="mainav" class="f1_right">
+                               <ul class="clear" style="color:green;">
+                                   <li class="active" ><a href="/" style="color:#7386F4;">home</a></li>
+                                   {% if itc > 0 %}
+                                   <li><a class="active" href="{% url 'cartDetails' %}" style="color:#7386F4;"><i class="fa fa-shopping-cart">&nbsp;{{itc}}</i></a> </li>
+                                   {% else %}
+                                   <li><a class="active" href="{% url 'cartDetails' %}" style="color:#7386F4;">Cart</a> </li>
+                                   {% endif %}
+                                    <li><a class="active" href="{% url 'login' %}" style="color:#7386F4;">Login</a> </li>
+                                    <li><a class="active" href="{% url 'register' %}" style="color:#7386F4;">Register</a> </li>
+
+                               </ul>
+
+                           </nav>
+
+    </header>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

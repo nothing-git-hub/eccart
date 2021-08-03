@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<html lang="en">
+<head>
+	<title>Ec cart</title>
+
+</head>
+<body>
+<!-- product start-->
+
+
+<center><h1 class="product_text"><strong  style="color:white"><span class="den" style="color:white">EC</span> Products</strong></h1></center>
+
+	<section id="introblocks">
+		<ul class="nospace group btmspace-80">
+			{% for i in pr %}
+			<li class="one_third">
+				<figure><a class="imgover" href="{{i.get_url}}"><img src="{{i.img.url}}" style="height: 250px; width: 250px;"></a>
+					<figcaption>
+					<h4 class="heading"  style="color:red">{{i.name}}</h4>
+					<p  style="color:red">{{i.des|truncatechars:50}}</p>
+
+					</figcaption>
+				</figure>
+			</li>
+		</ul>
+	</section><br><br>
+
+
+	{% endfor %}
+
+	<!-- product end-->
+
+
+
+</body>
+</html>
+{% endblock %}
